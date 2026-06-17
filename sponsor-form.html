@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sponsors | Uni Science Club</title>
+    <title>Sponsorship Application | Uni Science Club</title>
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
@@ -10,6 +10,19 @@
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
     </script>
+    <style>
+        .form-block textarea {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 150px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,7 +34,7 @@
                 <li><a href="scioly.html">Science Olympiad</a></li>
                 <li><a href="scibowl.html">Science Bowl</a></li>
                 <li><a href="news.html">News</a></li>
-                <li><a href="sponsors.html" class="active">Sponsors</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
                 <li><a href="tryouts.html">Tryouts</a></li>
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="#" class="theme-toggle">🌗 Toggle Theme</a></li>
@@ -32,16 +45,18 @@
 
     <main class="main-content">
         <div class="container">
-            <h2>Our Sponsors</h2>
-            <div class="gallery-grid" style="margin-bottom: 50px;">
-                <div class="gallery-placeholder">Sponsor 1 Image</div>
-                <div class="gallery-placeholder">Sponsor 2 Image</div>
-                <div class="gallery-placeholder">Sponsor 3 Image</div>
-            </div>
-
-            <h2>Sponsor Us</h2>
+            <h2>Sponsorship Request Form</h2>
             <p>DESCRIPTION HERE</p>
-            <a href="sponsor-form.html" class="btn-primary">Request Sponsorship</a>
+            
+            <form class="form-block" onsubmit="event.preventDefault(); alert('Sponsorship Form Submission Validated (Mock Backend Link).');">
+                <label>Name of Company Wishing to Sponsor</label>
+                <input type="text" placeholder="Enterprise Corp / Entity Name" required>
+                
+                <label>Body of Email</label>
+                <textarea placeholder="Outline your message parameters or proposal details here..." required></textarea>
+                
+                <button type="submit" class="btn-primary">Submit Sponsorship Request</button>
+            </form>
         </div>
     </main>
 
