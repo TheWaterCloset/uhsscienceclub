@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sponsors | Uni Science Club</title>
+    <title>Sponsors | UHS Science Club</title>
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
@@ -13,19 +13,20 @@
 </head>
 <body>
     <header>
-        <div class="logo">Uni Science Club</div>
+        <a href="index.html" class="logo-banner">UHS Science Club</a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="scioly.html">Science Olympiad</a></li>
                 <li><a href="scibowl.html">Science Bowl</a></li>
+                <li><a href="coaching.html">Coaching</a></li>
                 <li><a href="news.html">News</a></li>
                 <li><a href="sponsors.html" class="active">Sponsors</a></li>
                 <li><a href="tryouts.html">Tryouts</a></li>
                 <li><a href="resources.html">Resources</a></li>
-                <li><a href="#" class="theme-toggle">🌗 Toggle Theme</a></li>
-                <li><a href="tryouts.html" class="btn-nav">Join Email List</a></li>
+                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeS3C-lDl2ZzIvzGulSsHB2VZ1YaUNUYaXzWA6AeO8fTjxREw/viewform" target="_blank" rel="noopener" class="btn-nav">Join Email List</a></li>
+                <li><button class="theme-toggle-btn" aria-label="Toggle dark mode">🌗</button></li>
             </ul>
         </nav>
     </header>
@@ -34,27 +35,42 @@
         <div class="container">
             <h2>Our Sponsors</h2>
             <div class="gallery-grid" style="margin-bottom: 50px;">
-                <div class="gallery-placeholder">Sponsor 1 Image</div>
+                <img src="images/janestreet_sponsor.jpg" alt="Jane Street" class="sponsor-logo">
                 <div class="gallery-placeholder">Sponsor 2 Image</div>
                 <div class="gallery-placeholder">Sponsor 3 Image</div>
             </div>
 
             <h2>Sponsor Us</h2>
-            <p>DESCRIPTION HERE</p>
+            <p>Our SciOly and Science Bowl teams are some of the strongest in California and the nation. However, each competition comes with registration, transportation, food, equipment, and sometimes lodging expenses. We understand the impact a positive STEM experience has on high schoolers, and we hope to enable each of our students to succeed by providing access to competitions and resources. As such, we would be grateful for any monetary contributions.</p>
+            <p>Because any donations would be given to University High School Science Club, they are all federal tax-deductible. Further funding information and our tiering process for sponsors are available by reaching out to us at scienceclub.uhs@gmail.com</p>
             <a href="sponsor-form.html" class="btn-primary">Request Sponsorship</a>
         </div>
     </main>
 
-    <footer><p>&copy; 2026 University High Science Club. <a href="http://uniscienceclub.org">uniscienceclub.org</a></p></footer>
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/uhsscienceclub/" target="_blank" rel="noopener" class="footer-ig-btn">📷 Instagram @uhsscienceclub</a>
+        </div>
+        <div class="footer-info">
+            <p>Email: <a href="mailto:scienceclub.uhs@gmail.com">scienceclub.uhs@gmail.com</a></p>
+            <p>University High School, 4771 Campus Drive, Irvine, CA 92612</p>
+        </div>
+        <p class="footer-copyright">&copy; 2026 University High Science Club. <a href="http://uhsscienceclub.org">uhsscienceclub.org</a></p>
+    </footer>
 
     <script>
-        document.querySelector('.theme-toggle').addEventListener('click', function (e) {
-            e.preventDefault();
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+        (function () {
+            const toggle = document.querySelector('.theme-toggle-btn');
+            const saved = localStorage.getItem('theme') || 'light';
+            toggle.textContent = saved === 'dark' ? '☀️' : '🌗';
+            toggle.addEventListener('click', function () {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                toggle.textContent = newTheme === 'dark' ? '☀️' : '🌗';
+            });
+        })();
     </script>
 </body>
 </html>
