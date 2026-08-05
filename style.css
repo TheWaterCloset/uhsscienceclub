@@ -157,6 +157,21 @@ nav ul li a:hover, nav ul li a.active {
 
 .btn-nav:hover { background-color: var(--primary-color) !important; color: #ffffff !important; }
 
+.btn-nav-ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    color: #ffffff !important;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none !important;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-nav-ig:hover { opacity: 0.85; transform: translateY(-2px); }
+
 .hero {
     background: linear-gradient(rgba(240, 244, 248, 0.75), rgba(227, 236, 245, 0.85)), url('images/group_pic.jpg') center/cover no-repeat;
     padding: 100px 0;
