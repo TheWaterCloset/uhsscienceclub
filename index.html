@@ -13,7 +13,9 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo-banner">UHS Science Club</a>
+        <a href="index.html" class="logo-banner">
+            <img src="images/logo.png" alt="UHS Science Club Logo" class="logo-icon" onerror="this.onerror=null;this.style.display='none';">
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -22,8 +24,13 @@
                 <li><a href="coaching.html">Coaching</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="sponsors.html">Sponsors</a></li>
-                <li><a href="tryouts.html">Tryouts 2026</a></li>
-                <li><a href="https://www.instagram.com/uhsscienceclub/" target="_blank" rel="noopener" class="btn-nav-ig">📷 Instagram</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Tryouts <span class="dropdown-caret">▾</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="tryouts-scioly.html">Science Olympiad</a></li>
+                        <li><a href="tryouts-scibowl.html">Science Bowl</a></li>
+                    </ul>
+                </li>
                 <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeS3C-lDl2ZzIvzGulSsHB2VZ1YaUNUYaXzWA6AeO8fTjxREw/viewform" target="_blank" rel="noopener" class="btn-nav">Join Email List</a></li>
                 <li><button class="theme-toggle-btn" aria-label="Toggle dark mode">🌗</button></li>
             </ul>
@@ -35,7 +42,7 @@
             <h1>University High Science Club</h1>
             <div class="hero-btn-group">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS3C-lDl2ZzIvzGulSsHB2VZ1YaUNUYaXzWA6AeO8fTjxREw/viewform" target="_blank" rel="noopener" class="btn-primary">Join Email List</a>
-                <a href="tryouts.html" class="btn-primary">Tryouts 2026</a>
+                <a href="tryouts-scioly.html" class="btn-primary">Tryouts</a>
             </div>
         </div>
     </section>
@@ -54,9 +61,27 @@
         </div>
 
         <div class="container">
-            <h2>About Our Club</h2>
-            <p>The objective of Science Club is to enhance STEM education through team-based academic competitions, which require traditional and hands-on learning, research, experimentation, and construction. Through these competitions, students challenge and deepen both their raw knowledge in the sciences and their abilities to apply their skills into new fields and subjects.</p>
-            <p>OTHER THINGS HERE</p>
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h3>SCIENCE OLYMPIAD</h3>
+                    <p>From constructing engineering devices to solving physics problems, Science Olympiad offers a variety of science- and engineering-based challenges.</p>
+                    <a href="scioly.html" class="feature-link">Learn more -&gt;</a>
+                </div>
+                <div class="feature-img">
+                    <img src="images/home_scioly_image1.png" alt="Science Olympiad">
+                </div>
+            </div>
+
+            <div class="feature-row reverse">
+                <div class="feature-text">
+                    <h3>SCIENCE BOWL</h3>
+                    <p>Teams of 5 compete in a fast-paced, buzzer-style competition testing students' knowledge of math, physics, chemistry, biology, earth and space science, and energy.</p>
+                    <a href="scibowl.html" class="feature-link">Learn more -&gt;</a>
+                </div>
+                <div class="feature-img">
+                    <img src="images/home_scibowl_image1.jpg" alt="Science Bowl">
+                </div>
+            </div>
         </div>
     </main>
 
@@ -82,6 +107,20 @@
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 toggle.textContent = newTheme === 'dark' ? '☀️' : '🌗';
+            });
+        })();
+
+        (function () {
+            const dropdown = document.querySelector('.nav-dropdown');
+            const toggleLink = dropdown.querySelector('.dropdown-toggle');
+            toggleLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', function (e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
             });
         })();
     </script>

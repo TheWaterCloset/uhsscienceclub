@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tryouts 2026 | UHS Science Club</title>
+    <title>Science Olympiad Tryouts | UHS Science Club</title>
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
@@ -13,7 +13,9 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo-banner">UHS Science Club</a>
+        <a href="index.html" class="logo-banner">
+            <img src="images/logo.png" alt="UHS Science Club Logo" class="logo-icon" onerror="this.onerror=null;this.style.display='none';">
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -22,8 +24,13 @@
                 <li><a href="coaching.html">Coaching</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="sponsors.html">Sponsors</a></li>
-                <li><a href="tryouts.html" class="active">Tryouts 2026</a></li>
-                <li><a href="https://www.instagram.com/uhsscienceclub/" target="_blank" rel="noopener" class="btn-nav-ig">📷 Instagram</a></li>
+                <li class="nav-dropdown open">
+                    <a href="#" class="dropdown-toggle">Tryouts <span class="dropdown-caret">▾</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="tryouts-scioly.html" class="active">Science Olympiad</a></li>
+                        <li><a href="tryouts-scibowl.html">Science Bowl</a></li>
+                    </ul>
+                </li>
                 <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeS3C-lDl2ZzIvzGulSsHB2VZ1YaUNUYaXzWA6AeO8fTjxREw/viewform" target="_blank" rel="noopener" class="btn-nav">Join Email List</a></li>
                 <li><button class="theme-toggle-btn" aria-label="Toggle dark mode">🌗</button></li>
             </ul>
@@ -32,26 +39,15 @@
 
     <main class="main-content">
         <div class="container">
-            <h2>Tryouts 2026</h2>
+            <h2>Science Olympiad Tryouts</h2>
 
             <div class="coaching-section">
                 <div class="section-heading-row">
-                    <h3>Science Olympiad</h3>
                     <a href="#" class="btn-primary">Tryout Form</a>
                 </div>
                 <div class="coaching-box">
                     <p>Tryouts occur in mid-September (more information sent out later). We accept around 30 students across all four grades. Tryouts will test your knowledge in specific events (it is NOT a general entrance exam), so make sure you target your studying or designing/building by event; we recommend trying out for 2-4 events. Returners from last year who are not board members are required to try out as well.</p>
-                    <p>The four types of events in Science Olympiad are: study, construction, hybrid, and inquiry. Study events have a written portion/test only. Construction events require competitors to build a device. Hybrid events have both a written portion and a build device or hands-on laboratory portion. Inquiry events do not fall in the other categories as they usually have a very specific format unique to them. If you want to begin studying for the tryouts this fall, scioly.org great place to start. We have general and event-specific resources compiled HERE. We highly recommend using these resources and studying consistently over the summer because Science Olympiad is something that takes time to understand and prepare for. Don't worry if Science Olympiad is intimidating at first, you will reap the benefits of your hard work!</p>
-                </div>
-            </div>
-
-            <div class="coaching-section">
-                <div class="section-heading-row">
-                    <h3>Science Bowl</h3>
-                    <a href="#" class="btn-primary">Tryout Form</a>
-                </div>
-                <div class="coaching-box">
-                    <p>DESCRIPTION HERE</p>
+                    <p>The four types of events in Science Olympiad are: study, construction, hybrid, and inquiry. This year's events can be found <a href="https://www.soinc.org/learn/c-event-short-descriptions" target="_blank" rel="noopener">HERE</a>. Study events have a written portion/test only. Construction events require competitors to build a device. Hybrid events have both a written portion and a build device or hands-on laboratory portion. Inquiry events do not fall in the other categories as they usually have a very specific format unique to them. If you want to begin studying for the tryouts this fall, <a href="http://scioly.org" target="_blank" rel="noopener">scioly.org</a> and <a href="http://soinc.org" target="_blank" rel="noopener">soinc.org</a> are great places to start. We have general and event-specific resources compiled <a href="https://docs.google.com/document/d/1lQeM-aOdqwpNiIFaDrm_RKIsvATSpSmaldLJOIroZwU/edit?tab=t.0" target="_blank" rel="noopener">HERE</a>.</p>
                 </div>
             </div>
         </div>
@@ -79,6 +75,20 @@
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 toggle.textContent = newTheme === 'dark' ? '☀️' : '🌗';
+            });
+        })();
+
+        (function () {
+            const dropdown = document.querySelector('.nav-dropdown');
+            const toggleLink = dropdown.querySelector('.dropdown-toggle');
+            toggleLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', function (e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
             });
         })();
     </script>
