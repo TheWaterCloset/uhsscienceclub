@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stanford Invitational | UHS Science Club Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-banner">
+            <img src="images/logo.png" alt="UHS Science Club Logo" class="logo-icon" onerror="this.onerror=null;this.style.display='none';">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scioly.html">Science Olympiad</a></li>
+                <li><a href="scibowl.html">Science Bowl</a></li>
+                <li><a href="coaching.html">Coaching</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-toggle">Tryouts <span class="dropdown-caret">▾</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="tryouts-scioly.html">Science Olympiad</a></li>
+                        <li><a href="tryouts-scibowl.html">Science Bowl</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeS3C-lDl2ZzIvzGulSsHB2VZ1YaUNUYaXzWA6AeO8fTjxREw/viewform" target="_blank" rel="noopener" class="btn-nav">Join Email List</a></li>
+                <li><button class="theme-toggle-btn" aria-label="Toggle dark mode">🌗</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <a href="blog.html" class="back-link">&lt;- Back to Blog</a>
+
+            <h2 class="blog-post-header">2.2.26 — Stanford</h2>
+            <p class="blog-post-date">Travel Invitational</p>
+
+            <div class="blog-post-body">
+                <p>Travel invitationals are the highlight of the season for many of us. This year, we flew up to NorCal to participate in the Stanford Invitational, afterwards enjoying a team dinner, then sightseeing at San Francisco the next day.</p>
+            </div>
+
+            <div class="blog-gallery">
+                <figure class="blog-photo">
+                    <img src="images/image17.jpg" alt="Hotpot dinner">
+                    <figcaption>hotpot</figcaption>
+                </figure>
+                <figure class="blog-photo">
+                    <img src="images/image18.png" alt="Our unique hotel experience">
+                    <figcaption>our unique hotel experience</figcaption>
+                </figure>
+                <figure class="blog-photo">
+                    <img src="images/image20.png" alt="Exploring San Francisco">
+                    <figcaption>exploring san fran</figcaption>
+                </figure>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/uhsscienceclub/" target="_blank" rel="noopener" class="footer-ig-btn">📷 Instagram @uhsscienceclub</a>
+        </div>
+        <div class="footer-info">
+            <p>Email: <a href="mailto:scienceclub.uhs@gmail.com">scienceclub.uhs@gmail.com</a></p>
+            <p>University High School, 4771 Campus Drive, Irvine, CA 92612</p>
+        </div>
+        <p class="footer-copyright">&copy; 2026 University High Science Club. <a href="http://uhsscienceclub.org">uhsscienceclub.org</a></p>
+    </footer>
+
+    <script>
+        (function () {
+            const toggle = document.querySelector('.theme-toggle-btn');
+            const saved = localStorage.getItem('theme') || 'light';
+            toggle.textContent = saved === 'dark' ? '☀️' : '🌗';
+            toggle.addEventListener('click', function () {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                toggle.textContent = newTheme === 'dark' ? '☀️' : '🌗';
+            });
+        })();
+
+        (function () {
+            const dropdown = document.querySelector('.nav-dropdown');
+            const toggleLink = dropdown.querySelector('.dropdown-toggle');
+            toggleLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', function (e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
