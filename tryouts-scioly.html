@@ -24,7 +24,7 @@
                 <li><a href="coaching.html">Coaching</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="sponsors.html">Sponsors</a></li>
-                <li class="nav-dropdown open">
+                <li class="nav-dropdown">
                     <a href="#" class="dropdown-toggle">Tryouts <span class="dropdown-caret">▾</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="tryouts-scioly.html" class="active">Science Olympiad</a></li>
@@ -81,12 +81,41 @@
         (function () {
             const dropdown = document.querySelector('.nav-dropdown');
             const toggleLink = dropdown.querySelector('.dropdown-toggle');
+            let closeTimer;
+
+            function openDropdown() {
+                clearTimeout(closeTimer);
+                dropdown.classList.add('open');
+            }
+
+            function scheduleClose() {
+                clearTimeout(closeTimer);
+                closeTimer = setTimeout(function () {
+                    dropdown.classList.remove('open');
+                }, 300);
+            }
+
+            dropdown.addEventListener('mouseenter', openDropdown);
+            dropdown.addEventListener('mouseleave', scheduleClose);
+
             toggleLink.addEventListener('click', function (e) {
                 e.preventDefault();
-                dropdown.classList.toggle('open');
+                if (dropdown.classList.contains('open')) {
+                    dropdown.classList.remove('open');
+                } else {
+                    openDropdown();
+                }
             });
+
+            toggleLink.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    dropdown.classList.remove('open');
+                }
+            });
+
             document.addEventListener('click', function (e) {
                 if (!dropdown.contains(e.target)) {
+                    clearTimeout(closeTimer);
                     dropdown.classList.remove('open');
                 }
             });

@@ -48,7 +48,7 @@
                 <p>The National Ocean Sciences Bowl, similar to Science Bowl, is a buzzer-style competition covering topics related to oceanography, including marine biology, physical oceanography, and earth science, as well as marine policy, technology, and history. Though we were unable to attend an in-person regional competition, we participated in the Virtual Sponge Bowl, buzzing our way through toss-up questions and wrangling difficult team challenge questions to ultimately win the competition. Ocean Science Bowl is a fun and engaging way to explore oceanography through an exciting, fast-paced format, and we look forward to any future opportunities to participate in NOSB!</p>
             </div>
 
-            
+
         </div>
     </main>
 
@@ -80,12 +80,41 @@
         (function () {
             const dropdown = document.querySelector('.nav-dropdown');
             const toggleLink = dropdown.querySelector('.dropdown-toggle');
+            let closeTimer;
+
+            function openDropdown() {
+                clearTimeout(closeTimer);
+                dropdown.classList.add('open');
+            }
+
+            function scheduleClose() {
+                clearTimeout(closeTimer);
+                closeTimer = setTimeout(function () {
+                    dropdown.classList.remove('open');
+                }, 300);
+            }
+
+            dropdown.addEventListener('mouseenter', openDropdown);
+            dropdown.addEventListener('mouseleave', scheduleClose);
+
             toggleLink.addEventListener('click', function (e) {
                 e.preventDefault();
-                dropdown.classList.toggle('open');
+                if (dropdown.classList.contains('open')) {
+                    dropdown.classList.remove('open');
+                } else {
+                    openDropdown();
+                }
             });
+
+            toggleLink.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    dropdown.classList.remove('open');
+                }
+            });
+
             document.addEventListener('click', function (e) {
                 if (!dropdown.contains(e.target)) {
+                    clearTimeout(closeTimer);
                     dropdown.classList.remove('open');
                 }
             });

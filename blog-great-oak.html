@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Great Oak Invitational | UHS Science Club Blog</title>
+    <title>Science Olympiad Tryouts | UHS Science Club</title>
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
@@ -22,12 +22,12 @@
                 <li><a href="scioly.html">Science Olympiad</a></li>
                 <li><a href="scibowl.html">Science Bowl</a></li>
                 <li><a href="coaching.html">Coaching</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="sponsors.html">Sponsors</a></li>
                 <li class="nav-dropdown">
                     <a href="#" class="dropdown-toggle">Tryouts <span class="dropdown-caret">▾</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="tryouts-scioly.html">Science Olympiad</a></li>
+                        <li><a href="tryouts-scioly.html" class="active">Science Olympiad</a></li>
                         <li><a href="tryouts-scibowl.html">Science Bowl</a></li>
                     </ul>
                 </li>
@@ -39,27 +39,16 @@
 
     <main class="main-content">
         <div class="container">
-            <a href="blog.html" class="back-link">&lt;- Back to Blog</a>
+            <h2>Science Olympiad Tryouts</h2>
 
-            <h2 class="blog-post-header">12.13.25 — Great Oak Invitational</h2>
-            <p class="blog-post-date">Temecula, CA</p>
-
-            <div class="blog-post-body">
-                <p>The first in-person invitational we went to was hosted by Great Oak High School in Temecula. After a long day of tests, we were surprised by a Super Smash Bros tournament and an impromptu dance party (which I unfortunately do not have pictures of).</p>
-            </div>
-
-            <div class="blog-gallery">
-                <figure class="blog-photo">
-                    <img src="images/image9.png" alt="Yet another UHS SciOly tradition">
-                    <figcaption>yet another UHS SciOly tradition</figcaption>
-                </figure>
-                <figure class="blog-photo">
-                    <img src="images/image10.png" alt="Great Oak Invitational photo">
-                </figure>
-                <figure class="blog-photo">
-                    <img src="images/image11.png" alt="A strong start to the season">
-                    <figcaption>a strong start to the season!</figcaption>
-                </figure>
+            <div class="coaching-section">
+                <div class="section-heading-row">
+                    <a href="#" class="btn-primary">Tryout Form</a>
+                </div>
+                <div class="coaching-box">
+                    <p>Tryouts occur in mid-September (more information sent out later). We accept around 30 students across all four grades. Tryouts will test your knowledge in specific events (it is NOT a general entrance exam), so make sure you target your studying or designing/building by event; we recommend trying out for 2-4 events. Returners from last year who are not board members are required to try out as well.</p>
+                    <p>The four types of events in Science Olympiad are: study, construction, hybrid, and inquiry. This year's events can be found <a href="https://www.soinc.org/learn/c-event-short-descriptions" target="_blank" rel="noopener">HERE</a>. Study events have a written portion/test only. Construction events require competitors to build a device. Hybrid events have both a written portion and a build device or hands-on laboratory portion. Inquiry events do not fall in the other categories as they usually have a very specific format unique to them. If you want to begin studying for the tryouts this fall, <a href="http://scioly.org" target="_blank" rel="noopener">scioly.org</a> and <a href="http://soinc.org" target="_blank" rel="noopener">soinc.org</a> are great places to start. We have general and event-specific resources compiled <a href="https://docs.google.com/document/d/1lQeM-aOdqwpNiIFaDrm_RKIsvATSpSmaldLJOIroZwU/edit?tab=t.0" target="_blank" rel="noopener">HERE</a>.</p>
+                </div>
             </div>
         </div>
     </main>
@@ -92,12 +81,41 @@
         (function () {
             const dropdown = document.querySelector('.nav-dropdown');
             const toggleLink = dropdown.querySelector('.dropdown-toggle');
+            let closeTimer;
+
+            function openDropdown() {
+                clearTimeout(closeTimer);
+                dropdown.classList.add('open');
+            }
+
+            function scheduleClose() {
+                clearTimeout(closeTimer);
+                closeTimer = setTimeout(function () {
+                    dropdown.classList.remove('open');
+                }, 300);
+            }
+
+            dropdown.addEventListener('mouseenter', openDropdown);
+            dropdown.addEventListener('mouseleave', scheduleClose);
+
             toggleLink.addEventListener('click', function (e) {
                 e.preventDefault();
-                dropdown.classList.toggle('open');
+                if (dropdown.classList.contains('open')) {
+                    dropdown.classList.remove('open');
+                } else {
+                    openDropdown();
+                }
             });
+
+            toggleLink.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    dropdown.classList.remove('open');
+                }
+            });
+
             document.addEventListener('click', function (e) {
                 if (!dropdown.contains(e.target)) {
+                    clearTimeout(closeTimer);
                     dropdown.classList.remove('open');
                 }
             });
